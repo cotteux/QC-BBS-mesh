@@ -1,10 +1,10 @@
-# TC²-BBS Meshtastic Version
+# QC-BBS Meshtastic Version
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B1OZ22Z)
 
-This is the TC²-BBS system integrated with Meshtastic devices. The system allows for message handling, bulletin boards, mail systems, and a channel directory.
+Le system QC-BBS avec Meshtastic devices. cd système gère les courriels, le bulletin board et quelques utilitaires
+C'est une version francophone et adapter du système [TC²-BBS-Mesh]
 
-## Setup
 
 ### Requirements
 
@@ -14,62 +14,63 @@ This is the TC²-BBS system integrated with Meshtastic devices. The system allow
 
 ### Installation
 
-1. Clone the repository:
+1. Copiez le référentiel :
 
 ```sh
 git clone https://github.com/TheCommsChannel/TC2-BBS-mesh.git
-cd TC2-BBS-mesh
+cd QC-BBS-mesh
 ```
 
-2. Set up a Python virtual environment:
+2. Configurez un environnement virtuel Python :
 
 ```sh
 python -m venv venv
 ```
 
-3. Activate the virtual environment:
+3. Activez l'environnement virtuel :
   
 
-- On Windows:
+- sur Windows:
 
 ```sh
 venv\Scripts\activate
 ```
 
-- On macOS and Linux:
+- sur macOS ou Linux:
 
 ```sh
 source venv/bin/activate
 ```
 
-4. Install the required packages:
+4. Installez les packages requis :
 
 ```sh
 pip install -r requirements.txt
 ```
 
-5. Set up the configuration in `config.ini`:
+5. Configurez la configuration dans `config.ini` :
    
-  **[interface]**
-  
-  If using `type = serial` and you have multiple devices connected, you will need to uncomment the `port =` line and enter in the port of your device. 
-  
-  Linux Example:
-  `port = /dev/ttyUSB0` 
-  
-  Windows Example:
-  `port = COM3` 
-  
-  If using type = tcp you will need to uncomment the hostname = 192.168.x.x line and put in the IP address of your Meshtastic device 
-  
-  **[sync]**
-  
-  Enter in a list of other BBS nodes you would like to sync messages and bulletins with. Separate each by comma and no spaces as shown in the example below. 
-  You can find the nodeID in the menu under `Radio Configuration > User` for each node, or use this script for getting nodedb data from a device:
-  
-  [Meshtastic-Python-Examples/print-nodedb.py at main · pdxlocations/Meshtastic-Python-Examples (github.com)](https://github.com/pdxlocations/Meshtastic-Python-Examples/blob/main/print-nodedb.py)
+**[interface]**
 
-  Example Config:
+ Si vous utilisez « type = série » et que vous avez plusieurs appareils connectés, vous devrez décommenter la ligne « port = » et saisir le port de votre appareil.
+
+ Exemple Linux :
+ `port = /dev/ttyUSB0`
+
+ Exemple Windows :
+ `port = COM3`
+
+ Si vous utilisez type = tcp, vous devrez décommenter la ligne hostname = 192.168.x.x et saisir l'adresse IP de votre appareil Meshtastic.
+
+ **[sync]**
+
+ Entrez dans une liste d'autres nœuds BBS avec lesquels vous souhaitez synchroniser les messages et les bulletins. Séparez chacun par une virgule et sans espace, comme indiqué dans l'exemple ci-dessous.
+ Vous pouvez trouver le nodeID dans le menu sous « Configuration radio > Utilisateur » pour chaque nœud, ou utiliser ce script pour obtenir les données nodedb d'un appareil :
+
+ [Meshtastic-Python-Examples/print-nodedb.py sur main · pdxlocations/Meshtastic-Python-Examples (github.com)](https://github.com/pdxlocations/Meshtastic-Python-Examples/blob/main/print -nodedb.py)
+
+ Exemple de configuration :
+ Example Config:
 ```ini
 [interface]
 type = serial
@@ -80,43 +81,43 @@ type = serial
 bbs_nodes = !f53f4abc,!f3abc123
 ```
 
-### Running the Server
+### Exécution du serveur
 
-Run the server with:
+Exécutez le serveur avec :
 
 ```sh
 python server.py
 ```
 
-Be sure you've followed the Python virtual environment steps above and activated it before running.
+Assurez-vous d'avoir suivi les étapes de l'environnement virtuel Python ci-dessus et de l'avoir activé avant de l'exécuter.
 
-## Features
+## Caractéristiques
 
-- **Mail System**: Send and receive mail messages.
-- **Bulletin Boards**: Post and view bulletins on various boards.
-- **Channel Directory**: Add and view channels in the directory.
-- **Statistics**: View statistics about nodes, hardware, and roles.
-- **Wall of Shame**: View devices with low battery levels.
-- **Fortune Teller**: Get a random fortune. Pulls from the fortunes.txt file. Feel free to edit this file remove or add more if you like.
+- **Système de messagerie** : envoyez et recevez des messages électroniques.
+- **Tableaux d'affichage** : publiez et consultez des bulletins sur divers tableaux.
+- **Répertoire des chaînes** : ajoutez et affichez les chaînes dans le répertoire.
+- **Statistiques** : affichez les statistiques sur les nœuds, le matériel et les rôles.
+- **Mur de la honte** : affichez les appareils dont le niveau de batterie est faible.
+- **Fortune Teller** : Obtenez une fortune aléatoire. Extrait du fichier fortunes.txt. N'hésitez pas à modifier ce fichier, à le supprimer ou à en ajouter d'autres si vous le souhaitez.
 
-## Usage
+## Utilisation
 
-You interact with the BBS by sending direct messages to the node that's connected to the system running the Python script. Sending any message to it will get a response with the main menu.
-Make selections by sending messages based on the letter or number in brackets - Send M for [M]ail Menu for example.
+Vous interagissez avec le BBS en envoyant des messages directs au nœud connecté au système exécutant le script Python. En lui envoyant un message, vous obtiendrez une réponse avec le menu principal.
+Effectuez des sélections en envoyant des messages en fonction de la lettre ou du chiffre entre parenthèses - Envoyer M pour le menu [M]ail par exemple.
 
-A video of it in use is available on our YouTube channel:
+Une vidéo de son utilisation est disponible sur notre chaîne YouTube :
 
 [![TC²-BBS-Mesh](https://img.youtube.com/vi/d6LhY4HoimU/0.jpg)](https://www.youtube.com/watch?v=d6LhY4HoimU)
 
 
-## Thanks
+## Merci
 
-Big thanks to [Meshtastic](https://github.com/meshtastic) and [pdxlocations](https://github.com/pdxlocations) for the great Python examples:
+Un grand merci à [Meshtastic](https://github.com/meshtastic) et [pdxlocations](https://github.com/pdxlocations) pour les excellents exemples Python :
 
-[python/examples at master · meshtastic/python (github.com)](https://github.com/meshtastic/python/tree/master/examples)
+[python/examples chez master · meshtastic/python (github.com)](https://github.com/meshtastic/python/tree/master/examples)
 
 [pdxlocations/Meshtastic-Python-Examples (github.com)](https://github.com/pdxlocations/Meshtastic-Python-Examples)
 
-## License
+## Licence
 
-GNU General Public License v3.0
+Licence publique générale GNU v3.0
